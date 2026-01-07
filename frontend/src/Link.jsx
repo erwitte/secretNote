@@ -1,3 +1,5 @@
+import './App.css'
+
 function Link(){
     const handleCopy = async() => {
         await navigator.clipboard.writeText("copied");
