@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import Input from './input'
-import Link from './link'
+import Input from './Input'
+import Link from './Link'
 
 function App() {
   const [page, setPage] = useState("input")
