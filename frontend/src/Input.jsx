@@ -12,7 +12,13 @@ function Input({ onSave }) {
   
         <button
           onClick={() => onSave("link")}
-          className="self-center bg-blue-600 text-white rounded px-4 py-2 w-fit"
+          className="self-center
+            p-2
+            rounded
+            bg-slate-700
+            hover:bg-gray-100
+            active:bg-gray-200
+            text-slate-100"
         >
           Speichern
         </button>

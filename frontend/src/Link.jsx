@@ -17,9 +17,10 @@ function Link() {
           className="
             p-2
             rounded
+            bg-slate-700
             hover:bg-gray-100
             active:bg-gray-200
-            text-gray-600
+            text-slate-100
           "
           aria-label="Kopieren"
         >
