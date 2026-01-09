@@ -1,11 +1,17 @@
 import Fastify, { FastifyInstance } from 'fastify';
+import cors from '@fastify/cors';
 
 const server: FastifyInstance = Fastify({
   logger: true
 });
 
-server.get('/ping', async (request, reply) => {
-  return { msg: 'pong' };
+server.register(cors, { 
+    origin: "*", 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  });
+
+server.post('/encrypt', async (request, reply) => {
+    return reply.code(200).send({ msg: 'pong' });
 });
 
 const start = async () => {

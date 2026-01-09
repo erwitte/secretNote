@@ -1,6 +1,28 @@
-import './App.css'
+import { useState } from 'react'
 
 function Input({ onSave }) {
+  const [loading, setLoading] = useState(false);
+
+  const handleSave = async () => {
+    setLoading(true);
+    try {
+      // Replace with your actual API endpoint
+      const response = await fetch("http://localhost:3000/encrypt", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(" message: text "),
+      });
+
+      if (response.ok) {
+        onSave("link");
+      } 
+    } catch (error) {
+      console.error("API Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
     return (
       <div className="flex flex-col gap-3">
         <p>zu verschlüsselnde Nachricht eingeben:</p>
@@ -11,7 +33,8 @@ function Input({ onSave }) {
         />
   
         <button
-          onClick={() => onSave("link")}
+          onClick={handleSave}
+          disabled={loading}
           className="self-center
             p-2
             rounded
