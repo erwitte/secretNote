@@ -25,9 +25,6 @@ function Input({ onSave, setText}) {
   };
 
     return (
-      <div className="bg-slate-800
-      p-20
-      rounded">
         <div className="
         flex
         flex-col
@@ -44,8 +41,8 @@ function Input({ onSave, setText}) {
           rows={10}
           cols={50}
           onChange={(e) => setText(e.target.value)}
-          className="border border-gray-300 rounded px-4 py-3 bg-transparent text-zinc-200 resize-none"
-          placeholder="Nachricht hier eingeben..."
+          className="rounded px-100 py-3 bg-transparent text-zinc-200"
+          placeholder=" Nachricht hier eingeben..."
         />
   
         <button
@@ -62,7 +59,6 @@ function Input({ onSave, setText}) {
           Speichern
         </button>
         </div>
-      </div>
     )
   }
   
