@@ -38,10 +38,12 @@ function Input({ onSave }) {
         p-2
       ">
         <p>zu verschlüsselnde Nachricht eingeben:</p>
-        <input
-          type="text"
-          className="w-full border border-gray-300 rounded px-4 py-3 bg-transparent
-          text-zinc-200"
+        <textarea
+          rows={10}
+          cols={50}
+          onChange={(e) => setText(e.target.value)}
+          className="border border-gray-300 rounded px-4 py-3 bg-transparent text-zinc-200 resize-none"
+          placeholder="Nachricht hier eingeben..."
         />
   
         <button

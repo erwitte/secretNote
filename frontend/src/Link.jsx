@@ -19,7 +19,7 @@ function Link() {
           type="text"
           value="Preset Text"
           readOnly
-          className="flex-1 border border-gray-300 rounded px-3 py-2"
+          className="flex-1 border border-gray-300 rounded px-3 py-2 bg-slate-500 text-slate-200"
         />
   
         <button
