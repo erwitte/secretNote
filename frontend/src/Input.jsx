@@ -26,7 +26,6 @@ function Input({ onSave }) {
       <div className="bg-slate-800
       p-20
       rounded">
-        <p>zu verschlüsselnde Nachricht eingeben:</p>
         <div className="
         flex
         flex-col
@@ -38,6 +37,7 @@ function Input({ onSave }) {
         rounded-lg
         p-2
       ">
+        <p>zu verschlüsselnde Nachricht eingeben:</p>
         <input
           type="text"
           className="w-full border border-gray-300 rounded px-4 py-3 bg-transparent
