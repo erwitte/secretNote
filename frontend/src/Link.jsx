@@ -4,7 +4,9 @@ function Link() {
     }
   
     return (
-      <div className="flex items-center gap-2 max-w-md">
+      <div className="bg-slate-800
+      p-20
+      rounded">
         <input
           type="text"
           value="Preset Text"

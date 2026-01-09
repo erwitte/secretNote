@@ -7,7 +7,12 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="min-h-screen
+  flex
+  items-center
+  justify-center
+  bg-slate-950
+  text-slate-200">
       {page === "input" ? (
         <Input onSave={setPage} />
       ) : (

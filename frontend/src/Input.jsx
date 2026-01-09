@@ -6,15 +6,14 @@ function Input({ onSave }) {
   const handleSave = async () => {
     setLoading(true);
     try {
-      // Replace with your actual API endpoint
       const response = await fetch("http://localhost:3000/encrypt", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(" message: text "),
+        body: JSON.stringify({ message: "text" }),
       });
 
       if (response.ok) {
-        onSave("link");
+        onSave("Link");
       } 
     } catch (error) {
       console.error("API Error:", error);
@@ -24,7 +23,9 @@ function Input({ onSave }) {
   };
 
     return (
-      <div className="flex flex-col gap-3">
+      <div className="bg-slate-800
+      p-20
+      rounded">
         <p>zu verschlüsselnde Nachricht eingeben:</p>
   
         <input
