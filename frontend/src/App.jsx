@@ -4,6 +4,7 @@ import Link from './Link'
 
 function App() {
   const [page, setPage] = useState("input")
+  const [text, setText] = useState("")
 
   return (
     <>
@@ -14,9 +15,9 @@ function App() {
   bg-slate-950
   text-slate-200">
       {page === "input" ? (
-        <Input onSave={setPage} />
+        <Input onSave={() => setPage("link")} setText={setText}/>
       ) : (
-        <Link />
+        <Link generatedLink={text}/>
       )}
       </div>
     </>

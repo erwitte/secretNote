@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Input({ onSave }) {
+function Input({ onSave, setText}) {
   const [loading, setLoading] = useState(false);
 
   const handleSave = async () => {
@@ -13,6 +13,8 @@ function Input({ onSave }) {
       });
 
       if (response.ok) {
+        const data = await response.json();
+        setText(data.msg);
         onSave("Link");
       } 
     } catch (error) {
