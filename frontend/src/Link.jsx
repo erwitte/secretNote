@@ -7,6 +7,14 @@ function Link() {
       <div className="bg-slate-800
       p-20
       rounded">
+        <div className="flex
+        items-center
+        gap-2
+        bg-zinc-900
+        border
+        border-zinc-700
+        rounded-lg
+        p-2">
         <input
           type="text"
           value="Preset Text"
@@ -42,6 +50,7 @@ function Link() {
             />
           </svg>
         </button>
+        </div>
       </div>
     )
   }

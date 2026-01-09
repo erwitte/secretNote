@@ -27,10 +27,21 @@ function Input({ onSave }) {
       p-20
       rounded">
         <p>zu verschlüsselnde Nachricht eingeben:</p>
-  
+        <div className="
+        flex
+        flex-col
+        items-center
+        gap-2
+        bg-zinc-900
+        border
+        border-zinc-700
+        rounded-lg
+        p-2
+      ">
         <input
           type="text"
-          className="border border-gray-300 rounded px-3 py-2"
+          className="w-full border border-gray-300 rounded px-4 py-3 bg-transparent
+          text-zinc-200"
         />
   
         <button
@@ -46,6 +57,7 @@ function Input({ onSave }) {
         >
           Speichern
         </button>
+        </div>
       </div>
     )
   }
