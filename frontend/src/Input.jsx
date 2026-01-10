@@ -14,7 +14,7 @@ function Input({ onSave, setText}) {
 
       if (response.ok) {
         const data = await response.json();
-        setText(data.msg);
+        setText(data.link);
         onSave("Link");
       } 
     } catch (error) {

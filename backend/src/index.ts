@@ -12,7 +12,7 @@ server.register(cors, {
   });
 
 server.post('/encrypt', async (request, reply) => {
-    return reply.code(200).send({ msg: 'pong' });
+    return reply.code(200).send({ link: 'pong' });
 });
 
 const start = async () => {
