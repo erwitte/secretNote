@@ -1,6 +1,7 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
 
+
 const server: FastifyInstance = Fastify({
   logger: true
 });
