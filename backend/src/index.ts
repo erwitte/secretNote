@@ -1,6 +1,6 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
-import Sqids from "sqids";
+import { storeMessage } from './database/db';
 
 
 const server: FastifyInstance = Fastify({
@@ -21,7 +21,8 @@ server.post<{
   };
 }>('/encrypt', async (request, reply) => {
   const { iv, blob } = request.body.storeInDb;
-  return reply.code(200).send({ id: "true" });
+  const id: string = await storeMessage(iv, blob);
+  return reply.code(200).send({ id: id });
 });
 
 const start = async () => {
