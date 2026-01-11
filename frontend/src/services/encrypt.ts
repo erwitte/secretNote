@@ -7,7 +7,7 @@ const bufToBase64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
 const base64ToBuf = (str) => Uint8Array.from(atob(str), c => c.charCodeAt(0));
 
 // --- ENCRYPTION (Sender side) ---
-async function encryptMessage(text) {
+async function encryptMessage(text: string) {
   // 1. Generate a random 128-bit key
   const key = await window.crypto.subtle.generateKey(
     { name: "AES-GCM", length: 128 },
@@ -35,3 +35,5 @@ async function encryptMessage(text) {
     blob: bufToBase64(encryptedBuf) // Send this to Postgres
   };
 }
+
+export default encryptMessage

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import encryptMessage from"./services/encrypt"
 
 function Input({ onSave, setText}) {
   const [loading, setLoading] = useState(false);
@@ -6,6 +7,8 @@ function Input({ onSave, setText}) {
 
   const handleSave = async () => {
     setLoading(true);
+    const encrypted = await encryptMessage(message);
+    console.log(encrypted);
     try {
       const response = await fetch("http://localhost:3000/encrypt", {
         method: 'POST',
