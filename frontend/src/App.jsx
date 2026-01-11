@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Encryption from './Enryption'
-import Decryption from './Decryption'
+import Encryption from './encryption/Enryption'
+import Decryption from './decryption/Decryption'
 
 function App() {
   return (

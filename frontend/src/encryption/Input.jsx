@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import encryptMessage from"./services/encrypt"
+import encryptMessage from"../services/encrypt"
 
 function Input({ onSave, setText}) {
   const [loading, setLoading] = useState(false);

@@ -1,8 +1,7 @@
-// IdPage.jsx
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 
-function IdPage() {
+function Decryption() {
   const { id } = useParams()
   const [page, setPage] = useState("view")
 
@@ -29,4 +28,4 @@ function IdPage() {
   )
 }
 
-export default IdPage
+export default Decryption
