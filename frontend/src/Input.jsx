@@ -8,17 +8,18 @@ function Input({ onSave, setText}) {
   const handleSave = async () => {
     setLoading(true);
     const encrypted = await encryptMessage(message);
-    console.log(encrypted);
+    const storeInDb = {
+      iv: encrypted.iv,
+      blob: encrypted.blob
+    };
     try {
       const response = await fetch("http://localhost:3000/encrypt", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ storeInDb }),
       });
-
       if (response.ok) {
-        const data = await response.json();
-        setText(data.link);
+        setText("encrypted.link");
         onSave("Link");
       } 
     } catch (error) {

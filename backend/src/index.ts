@@ -11,8 +11,16 @@ server.register(cors, {
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   });
 
-server.post<{ Body: { message: string } }>('/encrypt', async (request, reply) => {
-    return reply.code(200).send({ link: request.body.message });
+server.post<{
+  Body: {
+    storeInDb: {
+      iv: string;
+      blob: string;
+    };
+  };
+}>('/encrypt', async (request, reply) => {
+  const { iv, blob } = request.body.storeInDb;
+  return reply.code(200).send({ ok: true });
 });
 
 const start = async () => {
