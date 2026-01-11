@@ -3,22 +3,22 @@ import { useState } from 'react'
 
 function Decryption() {
   const { id } = useParams()
-  const [page, setPage] = useState("view")
+  const [show, setShow] = useState(false)
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 text-slate-200">
       <div className="bg-slate-800 p-10 rounded shadow-xl w-[550px] h-[450px] flex flex-col justify-center">
-        {page === "view" ? (
+        {show === false ? (
           <>
             <h1 className="text-xl mb-4">ID: {id}</h1>
-            <button onClick={() => setPage("edit")}>
-              Go to edit
+            <button onClick={() => setShow(true)}>
+              Text anzeigen
             </button>
           </>
         ) : (
           <>
             <h1 className="text-xl mb-4">Editing {id}</h1>
-            <button onClick={() => setPage("view")}>
+            <button onClick={() => setShow(false)}>
               Back
             </button>
           </>
