@@ -1,5 +1,6 @@
 CREATE TABLE messages (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  message TEXT NOT NULL,
+  id TEXT PRIMARY KEY,       -- the 'asdfqw' part
+  iv TEXT NOT NULL,          -- the initialization vector
+  encrypted_blob TEXT NOT NULL,
   timestamp TIMESTAMPTZ DEFAULT NOW()
 );

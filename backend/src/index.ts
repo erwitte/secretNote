@@ -11,8 +11,8 @@ server.register(cors, {
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   });
 
-server.post('/encrypt', async (request, reply) => {
-    return reply.code(200).send({ link: 'pong' });
+server.post<{ Body: { message: string } }>('/encrypt', async (request, reply) => {
+    return reply.code(200).send({ link: request.body.message });
 });
 
 const start = async () => {

@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 function Input({ onSave, setText}) {
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleSave = async () => {
     setLoading(true);
@@ -9,7 +10,7 @@ function Input({ onSave, setText}) {
       const response = await fetch("http://localhost:3000/encrypt", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: "text" }),
+        body: JSON.stringify({ message }),
       });
 
       if (response.ok) {
@@ -40,7 +41,7 @@ function Input({ onSave, setText}) {
         <textarea
           rows={10}
           cols={50}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => setMessage(e.target.value)}
           className="rounded px-100 py-3 bg-transparent text-zinc-200"
           placeholder=" Nachricht hier eingeben..."
         />
