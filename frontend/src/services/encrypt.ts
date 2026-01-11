@@ -1,5 +1,4 @@
 const encoder = new TextEncoder();
-const decoder = new TextDecoder();
 
 // Converts a buffer to a Base64 string so you can send it to your Postgres DB
 const bufToBase64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));

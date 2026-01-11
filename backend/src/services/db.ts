@@ -1,17 +1,15 @@
 import { Pool } from 'pg';
-import Sqids from "sqids";
+import { getSqids } from './sqid';
 
 const pool = new Pool({
     connectionString: 'postgres://myuser:mysecretpassword@localhost:5432/mydatabase'
   });
 
-const sqids = new Sqids({
-  minLength: 4,
-})
-
-function getPool(){
-    return pool;
+export function getPool(){
+  return pool;
 }
+
+const sqids = getSqids();
 
 export async function storeMessage(iv: string, encrypted_blob: string): Promise<string> {
   const client = await pool.connect();

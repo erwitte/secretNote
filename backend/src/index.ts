@@ -1,6 +1,7 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
-import { storeMessage } from './database/db';
+import { storeMessage } from './services/db';
+import { decryptMessage } from './services/decrypt';
 
 
 const server: FastifyInstance = Fastify({
@@ -24,6 +25,21 @@ server.post<{
   const id: string = await storeMessage(iv, blob);
   return reply.code(200).send({ id: id });
 });
+
+server.get<{
+  Params: { id: string };
+  Body: {
+    data: {
+      secretKey: string;
+    }
+  }
+}>("/decrypt", async(request, reply) => {
+  const { secretKey } = request.body.data;
+  const { id } = request.params;
+  const decryptedMessage = decryptMessage(secretKey, id);
+
+  return reply.code(200).send ({ message: decryptMessage});
+})
 
 const start = async () => {
   try {
