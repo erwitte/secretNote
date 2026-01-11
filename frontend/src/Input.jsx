@@ -19,7 +19,7 @@ function Input({ onSave, setText}) {
         body: JSON.stringify({ storeInDb }),
       });
       if (response.ok) {
-        setText("encrypted.link");
+        setText(encrypted.link);
         onSave("Link");
       } 
     } catch (error) {

@@ -19,7 +19,7 @@ function Link({ generatedLink }) {
           type="text"
           value={generatedLink}
           readOnly
-          className="flex-1 border border-gray-300 rounded px-3 py-2 bg-slate-500 text-slate-200"
+          className="flex-1 border border-gray-300 rounded px-3 py-2 bg-slate-500 text-slate-200 w-full"
         />
   
         <button
