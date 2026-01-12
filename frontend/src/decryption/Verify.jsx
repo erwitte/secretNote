@@ -24,6 +24,7 @@ function Verify({ setShow }) {
             rounded
             bg-slate-700
             hover:bg-gray-100
+            hover:text-slate-700
             active:bg-gray-200
             text-slate-100
           "
@@ -37,6 +38,7 @@ function Verify({ setShow }) {
             rounded
             bg-slate-700
             hover:bg-gray-100
+            hover:text-slate-700
             active:bg-gray-200
             text-slate-100
           ">Abbrechen</button>
