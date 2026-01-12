@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
+import ShowText from "./ShowText"
+import Verify from './Verify'
 
 function Decryption() {
   const { id } = useParams()
@@ -10,17 +12,11 @@ function Decryption() {
       <div className="bg-slate-800 p-10 rounded shadow-xl w-[550px] h-[450px] flex flex-col justify-center">
         {show === false ? (
           <>
-            <h1 className="text-xl mb-4">ID: {id}</h1>
-            <button onClick={() => setShow(true)}>
-              Text anzeigen
-            </button>
+            <Verify setShow={setShow} />
           </>
         ) : (
           <>
-            <h1 className="text-xl mb-4">Editing {id}</h1>
-            <button onClick={() => setShow(false)}>
-              Back
-            </button>
+            <ShowText />
           </>
         )}
       </div>
