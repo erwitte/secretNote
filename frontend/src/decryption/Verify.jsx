@@ -1,7 +1,26 @@
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router";
 
-function Verify({ setShow }) {
+function Verify({ setShow, setResponse }) {
     const navigate = useNavigate();
+    const { id } = useParams();
+
+    async function getEncryptedMessage(id){
+      try {
+        const response = await fetch(`http://localhost:3000/decrypt/${id}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setResponse(data);
+          setShow(true);
+        } 
+      } catch (error) {
+        console.error("API Error:", error);
+      }
+    }
 
     return (
       <div className="bg-slate-800
@@ -18,7 +37,7 @@ function Verify({ setShow }) {
         rounded-lg
         p-2">
             <button
-          onClick={() => setShow(true)}
+          onClick={() => getEncryptedMessage(id)}
           className="
             p-2
             rounded

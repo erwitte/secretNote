@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import encryptMessage from"../services/encrypt"
-import { useParams, useLocation } from "react-router";
+import decryptMessage from"../services/decrypt"
+import { useLocation } from "react-router";
 
 function ShowText({ onSave, setText}) {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const { id } = useParams();
   const { hash } = useLocation();
   const cleanedHash = hash.replace("#", "");
 

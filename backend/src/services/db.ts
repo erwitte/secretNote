@@ -15,15 +15,15 @@ export async function storeMessage(iv: string, encrypted_blob: string): Promise<
   const client = await pool.connect();
   try {
     const dbLenght: number = (await client.query("SELECT * FROM messages")).rows.length;
-    const id = sqids.encode([dbLenght]);
+    const encryptedId = sqids.encode([dbLenght]);
 
     const query = `
       INSERT INTO messages(id, iv, encrypted_blob)
       VALUES($1, $2, $3)
     `;
-    await client.query(query, [id, iv, encrypted_blob]);
+    await client.query(query, [dbLenght, iv, encrypted_blob]);
 
-    return id; // This is safe to return for URL usage
+    return encryptedId; // This is safe to return for URL usage
   }catch (error) {
     console.error("API Error:", error); 
     return "error saving message";
@@ -34,8 +34,9 @@ export async function storeMessage(iv: string, encrypted_blob: string): Promise<
 
 export async function getEncyptedMessage(id: string) {
   const decodedId: number = sqids.decode(id)[0];
+  console.log("id: ", decodedId);
   const client = await pool.connect();
-  const query = "SELECT iv, encrypted_blob WHERE ID = $1;"
+  const query = "SELECT iv, encrypted_blob FROM messages WHERE ID = $1;"
   const result = await client.query(query, [decodedId]);
 
   if (result.rows.length === 0) {

@@ -1,7 +1,7 @@
 const base64ToBuf = (str: string) => Uint8Array.from(atob(str), c => c.charCodeAt(0));
 const decoder = new TextDecoder();
 
-export async function decryptMessage(keyString: string, iv: string, encrypted_blob: string) {
+async function decryptMessage(keyString: string, iv: string, encrypted_blob: string) {
 const key = await window.crypto.subtle.importKey(
       "raw",
       base64ToBuf(keyString),
@@ -22,3 +22,5 @@ const key = await window.crypto.subtle.importKey(
       return "Decryption failed. Wrong key or corrupted data.";
     }
   }
+
+export default decryptMessage

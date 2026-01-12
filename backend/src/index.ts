@@ -27,7 +27,7 @@ server.post<{
 
 server.get<{
   Params: { id: string };
-}>("/decrypt", (request, reply) => {
+}>("/decrypt/:id", (request, reply) => {
   const { id } = request.params;
   return reply.code(200).send ({ message: getEncyptedMessage(id)});
 })
