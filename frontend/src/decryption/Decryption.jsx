@@ -17,7 +17,7 @@ function Decryption() {
           </>
         ) : (
           <>
-            <ShowText />
+            <ShowText response={response} />
           </>
         )}
       </div>

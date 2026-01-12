@@ -44,6 +44,6 @@ export async function getEncyptedMessage(id: string) {
 
   return {
       iv: result.rows[0].iv,
-      encrypted_blob: result.rows[0].encrypted_blob
+      encryptedBlob: result.rows[0].encrypted_blob
   }
 }

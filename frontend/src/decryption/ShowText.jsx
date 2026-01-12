@@ -1,13 +1,31 @@
-import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import decryptMessage from"../services/decrypt"
 import { useLocation } from "react-router";
+import { useState, useEffect } from "react";
 
-function ShowText({ onSave, setText}) {
-  const [message, setMessage] = useState("");
+function ShowText({ response}) {
+    const [decryptedText, setDecryptedText] = useState("Decrypting...");
   const navigate = useNavigate();
   const { hash } = useLocation();
-  const cleanedHash = hash.replace("#", "");
+  const keyString = hash.replace("#", "");
+  useEffect(() => {
+    async function performDecryption() {
+        try {
+          // response.encrypted_blob (ensure this matches your server's property name)
+          const result = await decryptMessage(
+            keyString, 
+            response.iv, 
+            response.encryptedBlob 
+          );
+          setDecryptedText(result);
+        } catch (err) {
+          setDecryptedText("Error: Could not decrypt the message.");
+          console.error(err);
+        }
+      }
+  if (response && keyString) {
+    performDecryption();
+  }})
 
     return (
         <div className="
@@ -24,7 +42,8 @@ function ShowText({ onSave, setText}) {
         <textarea
           rows={10}
           cols={50}
-          onChange={(e) => setMessage(e.target.value)}
+          disabled={true}
+          value={decryptedText}
           className="rounded px-100 py-3 bg-transparent text-zinc-200"
           placeholder=" Nachricht hier eingeben..."
         />
