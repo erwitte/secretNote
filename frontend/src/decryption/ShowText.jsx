@@ -7,7 +7,7 @@ function Input({ onSave, setText}) {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSave = async () => {
+  const getEncypted = async () => {
     setLoading(true);
     const encrypted = await encryptMessage(message);
     const storeInDb = {
