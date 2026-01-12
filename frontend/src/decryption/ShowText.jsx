@@ -1,35 +1,14 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import encryptMessage from"../services/encrypt"
+import { useParams, useLocation } from "react-router";
 
-function Input({ onSave, setText}) {
-  const [loading, setLoading] = useState(false);
+function ShowText({ onSave, setText}) {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-
-  const getEncypted = async () => {
-    setLoading(true);
-    const encrypted = await encryptMessage(message);
-    const storeInDb = {
-      iv: encrypted.iv,
-      blob: encrypted.blob
-    };
-    try {
-      const response = await fetch("http://localhost:3000/encrypt", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ storeInDb }),
-      });
-      if (response.ok) {
-        setText(encrypted.link);
-        onSave("Link");
-      } 
-    } catch (error) {
-      console.error("API Error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { id } = useParams();
+  const { hash } = useLocation();
+  const cleanedHash = hash.replace("#", "");
 
     return (
         <div className="
@@ -53,7 +32,6 @@ function Input({ onSave, setText}) {
   
         <button
           onClick={() => navigate("/")}
-          disabled={loading}
           className="self-center
             p-2
             rounded
@@ -68,5 +46,5 @@ function Input({ onSave, setText}) {
     )
   }
   
-  export default Input
+  export default ShowText
   
