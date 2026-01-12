@@ -19,7 +19,9 @@ function Input({ onSave, setText}) {
         body: JSON.stringify({ storeInDb }),
       });
       if (response.ok) {
-        setText(encrypted.link);
+        const data = await response.json();
+        const encryptedId = data.id;
+        setText(encryptedId + "#" + encrypted.link);
         onSave("Link");
       } 
     } catch (error) {
