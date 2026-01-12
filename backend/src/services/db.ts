@@ -34,7 +34,6 @@ export async function storeMessage(iv: string, encrypted_blob: string): Promise<
 
 export async function getEncyptedMessage(id: string) {
   const decodedId: number = sqids.decode(id)[0];
-  console.log("id: ", decodedId);
   const client = await pool.connect();
   const query = "SELECT iv, encrypted_blob FROM messages WHERE ID = $1;"
   const result = await client.query(query, [decodedId]);
