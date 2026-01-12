@@ -6,8 +6,10 @@ function Verify({ setShow }) {
     return (
       <div className="bg-slate-800
       p-20
-      rounded">
+      rounded
+      flex justify-center">
         <div className="flex
+        inline-flex
         items-center
         gap-2
         bg-zinc-900
