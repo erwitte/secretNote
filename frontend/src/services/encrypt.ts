@@ -1,9 +1,9 @@
+import decryptMessage from "./decrypt";
+
 const encoder = new TextEncoder();
 
 // Converts a buffer to a Base64 string so you can send it to your Postgres DB
 const bufToBase64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
-// Converts Base64 back to a buffer
-const base64ToBuf = (str) => Uint8Array.from(atob(str), c => c.charCodeAt(0));
 
 // --- ENCRYPTION (Sender side) ---
 async function encryptMessage(text: string) {
@@ -27,6 +27,10 @@ async function encryptMessage(text: string) {
     key,
     encoder.encode(text)
   );
+
+  const e = await decryptMessage(keyString, iv, encryptedBuf);
+  console.log("OIOpijesaigjdsoijgjg");
+  console.log("test stuff: ", e);
 
   return {
     link: keyString,           // Save this for the URL # fragment
