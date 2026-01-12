@@ -1,7 +1,6 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
-import { storeMessage } from './services/db';
-import { getEncyptedMessage } from './services/decrypt';
+import { storeMessage, getEncyptedMessage } from './services/db';
 
 
 const server: FastifyInstance = Fastify({
@@ -28,11 +27,9 @@ server.post<{
 
 server.get<{
   Params: { id: string };
-}>("/decrypt", async(request, reply) => {
+}>("/decrypt", (request, reply) => {
   const { id } = request.params;
-  const encryptedMessage = getEncyptedMessage(id);
-
-  return reply.code(200).send ({ message: encryptedMessage});
+  return reply.code(200).send ({ message: getEncyptedMessage(id)});
 })
 
 const start = async () => {
