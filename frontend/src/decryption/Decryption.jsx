@@ -4,7 +4,6 @@ import ShowText from "./ShowText"
 import Verify from './Verify'
 
 function Decryption() {
-  const { id } = useParams()
   const [show, setShow] = useState(false)
   const [response, setResponse] = useState(null)
 

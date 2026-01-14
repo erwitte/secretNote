@@ -12,6 +12,8 @@ function Input({ onSave, setText}) {
       iv: encrypted.iv,
       blob: encrypted.blob
     };
+    const encodedLink = encodeURIComponent(encrypted.link);
+    
     try {
       const response = await fetch("http://localhost:3000/encrypt", {
         method: 'POST',
@@ -21,7 +23,7 @@ function Input({ onSave, setText}) {
       if (response.ok) {
         const data = await response.json();
         const encryptedId = data.id;
-        setText(encryptedId + "#" + encrypted.link);
+        setText(encryptedId + "#" + encodedLink);
         onSave("Link");
       } 
     } catch (error) {

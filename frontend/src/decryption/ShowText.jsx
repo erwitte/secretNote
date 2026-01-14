@@ -7,7 +7,8 @@ function ShowText({ response}) {
     const [decryptedText, setDecryptedText] = useState("Decrypting...");
   const navigate = useNavigate();
   const { hash } = useLocation();
-  const keyString = hash.replace("#", "");
+  const encodedKeyString = hash.replace("#", "");
+  const keyString = decodeURIComponent(encodedKeyString);
   useEffect(() => {
     async function performDecryption() {
         try {

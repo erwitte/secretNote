@@ -1,9 +1,14 @@
-import decryptMessage from "./decrypt";
-
 const encoder = new TextEncoder();
 
-// Converts a buffer to a Base64 string so you can send it to your Postgres DB
-const bufToBase64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
+function bufToBase64(buf: ArrayBuffer): string {
+    const bytes = new Uint8Array(buf);
+    let binary = "";
+    for (let i = 0; i < bytes.length; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary);
+  }
+  
 
 // --- ENCRYPTION (Sender side) ---
 async function encryptMessage(text: string) {
@@ -16,7 +21,7 @@ async function encryptMessage(text: string) {
 
   // 2. Export the key as a "raw" string to put in the URL fragment (#)
   const rawKey = await window.crypto.subtle.exportKey("raw", key);
-  const keyString = bufToBase64(rawKey);
+  const keyString: string = bufToBase64(rawKey);
 
   // 3. Create a random IV (Initialization Vector) - unique for every message
   const iv = window.crypto.getRandomValues(new Uint8Array(12));
@@ -28,14 +33,13 @@ async function encryptMessage(text: string) {
     encoder.encode(text)
   );
 
-  const e = await decryptMessage(keyString, iv, encryptedBuf);
-  console.log("OIOpijesaigjdsoijgjg");
-  console.log("test stuff: ", e);
+  const parsedBuf = bufToBase64(encryptedBuf);
+  const parsedIv = bufToBase64(iv);
 
   return {
     link: keyString,           // Save this for the URL # fragment
-    iv: bufToBase64(iv), // Send this to Postgres
-    blob: bufToBase64(encryptedBuf) // Send this to Postgres
+    iv: parsedBuf, // Send this to Postgres
+    blob: parsedIv // Send this to Postgres
   };
 }
 

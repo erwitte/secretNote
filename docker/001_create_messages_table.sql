@@ -1,6 +1,6 @@
 CREATE TABLE messages (
   id TEXT PRIMARY KEY,       -- the 'asdfqw' part
-  iv BYTEA NOT NULL,          -- the initialization vector
-  encrypted_blob BYTEA NOT NULL,
+  iv TEXT NOT NULL,          -- the initialization vector
+  encrypted_blob TEXT NOT NULL,
   timestamp TIMESTAMPTZ DEFAULT NOW()
 );
