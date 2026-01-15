@@ -1,9 +1,9 @@
 import Sqids from "sqids";
 
-const sqids = new Sqids({
+const sqid = new Sqids({
     minLength: 4,
 })
 
-export function getSqids(){
-    return sqids;
+export function getSqid(){
+    return sqid;
 }

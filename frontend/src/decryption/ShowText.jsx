@@ -10,23 +10,25 @@ function ShowText({ response}) {
   const encodedKeyString = hash.replace("#", "");
   const keyString = decodeURIComponent(encodedKeyString);
   useEffect(() => {
+    if (!response || !keyString) return;
+  
     async function performDecryption() {
-        try {
-          // response.encrypted_blob (ensure this matches your server's property name)
-          const result = await decryptMessage(
-            keyString, 
-            response.iv, 
-            response.encryptedBlob 
-          );
-          setDecryptedText(result);
-        } catch (err) {
-          setDecryptedText("Error: Could not decrypt the message.");
-          console.error(err);
-        }
+      try {
+        const result = await decryptMessage(
+          keyString,
+          response.message.iv,
+          response.message.encryptedBlob
+        );
+        setDecryptedText(result);
+      } catch (err) {
+        console.error(err);
+        setDecryptedText("Error: Could not decrypt the message.");
       }
-  if (response && keyString) {
+    }
+  
     performDecryption();
-  }})
+  }, [response, keyString]);
+  
 
     return (
         <div className="

@@ -13,7 +13,6 @@ function Verify({ setShow, setResponse }) {
         });
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
           setResponse(data);
           setShow(true);
         } 

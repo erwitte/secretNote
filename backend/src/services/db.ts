@@ -1,5 +1,5 @@
 import { Pool } from 'pg';
-import { getSqids } from './sqid';
+import { getSqid } from './sqid';
 import { Buffer } from "buffer";
 
 
@@ -11,7 +11,7 @@ export function getPool(){
   return pool;
 }
 
-const sqids = getSqids();
+const sqids = getSqid();
 
 export async function storeMessage(iv: string, encrypted_blob: string): Promise<string> {
   const client = await pool.connect();

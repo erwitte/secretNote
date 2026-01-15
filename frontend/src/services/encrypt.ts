@@ -1,13 +1,17 @@
 const encoder = new TextEncoder();
 
-function bufToBase64(buf: ArrayBuffer): string {
-    const bytes = new Uint8Array(buf);
+function bufToBase64(input: ArrayBuffer | Uint8Array): string {
+    const bytes = input instanceof Uint8Array
+      ? input
+      : new Uint8Array(input);
+  
     let binary = "";
     for (let i = 0; i < bytes.length; i++) {
       binary += String.fromCharCode(bytes[i]);
     }
     return btoa(binary);
   }
+  
   
 
 // --- ENCRYPTION (Sender side) ---
@@ -38,8 +42,8 @@ async function encryptMessage(text: string) {
 
   return {
     link: keyString,           // Save this for the URL # fragment
-    iv: parsedBuf, // Send this to Postgres
-    blob: parsedIv // Send this to Postgres
+    iv: parsedIv, // Send this to Postgres
+    blob: parsedBuf // Send this to Postgres
   };
 }
 
