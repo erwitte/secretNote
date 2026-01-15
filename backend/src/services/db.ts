@@ -55,3 +55,17 @@ export async function getEncyptedMessage(id: string) {
     client.release();
   }
 }
+
+export async function deleteMessageById(id: string){
+  const decodedId: number = sqids.decode(id)[0];
+  const client = await pool.connect();
+
+  try{
+    const query = "DELETE FROM messages WHERE ID = $1;";
+    const result = await client.query(query, [decodedId]);
+  }
+
+  finally {
+    client.release();
+  }
+}
