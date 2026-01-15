@@ -4,7 +4,7 @@ import { Buffer } from "buffer";
 
 
 const pool = new Pool({
-    connectionString: 'postgres://myuser:mysecretpassword@localhost:5432/mydatabase'
+    connectionString: process.env.DATABASE_URL
   });
 
 export function getPool(){
