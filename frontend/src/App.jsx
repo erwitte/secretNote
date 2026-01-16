@@ -5,7 +5,6 @@ import Decryption from './decryption/Decryption'
 function App() {
   return (
     <BrowserRouter>
-      {/* ROOT LAYOUT */}
       <div className="min-h-screen flex flex-col bg-slate-950 text-slate-200">
 
         {/* Header */}
@@ -16,13 +15,16 @@ function App() {
           </div>
         </header>
 
-        {/* Page Content */}
-        <main className="flex flex-1 items-center justify-center">
-          <div className="bg-slate-800 p-10 rounded shadow-xl w-[550px] h-[450px] flex flex-col justify-center">
-          <Routes>
-            <Route path="/" element={<Encryption />} />
-            <Route path="/:id" element={<Decryption />} />
-          </Routes>
+        {/* Main: fill remaining space */}
+        <main className="flex-1 flex">
+          {/* Optionally center a card */}
+          <div className="flex-1 flex items-center justify-center">
+            <div className="bg-slate-800 p-10 rounded shadow-xl w-[550px] h-full flex flex-col justify-center">
+              <Routes className="flex-1">
+                <Route path="/" element={<Encryption />} />
+                <Route path="/:id" element={<Decryption />} />
+              </Routes>
+            </div>
           </div>
         </main>
 
