@@ -17,11 +17,13 @@ function App() {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1">
+        <main className="flex flex-1 items-center justify-center">
+          <div className="bg-slate-800 p-10 rounded shadow-xl w-[550px] h-[450px] flex flex-col justify-center">
           <Routes>
             <Route path="/" element={<Encryption />} />
             <Route path="/:id" element={<Decryption />} />
           </Routes>
+          </div>
         </main>
 
         {/* Footer */}
