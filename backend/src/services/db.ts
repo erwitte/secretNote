@@ -43,7 +43,7 @@ export async function getEncyptedMessage(id: string) {
     const result = await client.query(query, [decodedId]);
 
     if (result.rows.length === 0) {
-      throw new Error("Message not found");
+      return { iv: null, encryptedBlob: null };
     }
 
     // result.rows[0].iv and encrypted_blob are already strings from the TEXT column

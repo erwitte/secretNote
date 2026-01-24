@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import { useState, useEffect } from "react";
 
 function ShowText({ response}) {
-    const [decryptedText, setDecryptedText] = useState("Decrypting...");
+    const [decryptedText, setDecryptedText] = useState("Node not found");
   const navigate = useNavigate();
   const { hash } = useLocation();
   const encodedKeyString = hash.replace("#", "");
