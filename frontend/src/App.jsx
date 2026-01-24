@@ -19,7 +19,7 @@ function App() {
         <main className="flex-1 flex">
           {/* Optionally center a card */}
           <div className="flex-1 flex items-center justify-center">
-            <div className="bg-slate-800 p-10 rounded shadow-xl w-[550px] h-full flex flex-col justify-center">
+            <div className="bg-slate-800 p-10 rounded shadow-xl w-[550px] flex flex-col justify-center">
               <Routes className="flex-1">
                 <Route path="/" element={<Encryption />} />
                 <Route path="/:id" element={<Decryption />} />
